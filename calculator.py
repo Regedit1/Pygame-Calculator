@@ -9,7 +9,7 @@ screen = pygame.display.set_mode((400,400),0,32)
 background = pygame.image.load(bg).convert()
 pygame.display.set_caption("Calculator")
 
-#testing git
+
 
 
 #Game loop
