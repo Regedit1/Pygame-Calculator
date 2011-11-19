@@ -15,6 +15,14 @@ forn = "num"
 def funcornum(x,y):
     if x > 20 and x < 220 and y > 100 and y < 300:
         print "number"
+        forn = "number"
+    elif x > 300 and x < 350 and y > 100 and y < 300:
+        print "function"
+        forn = "function"
+    return forn
+
+def whichnumber():
+    print "testing for number"
 
 #Game loop
 while 1:
@@ -24,7 +32,10 @@ while 1:
             sys.exit()
         if event.type == MOUSEBUTTONDOWN:
             x , y = pygame.mouse.get_pos()
-            funcornum(x , y)
+            forn = funcornum(x , y)
+            if forn == "number":
+                whichnumber()
+        
 
 
     
