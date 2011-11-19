@@ -35,8 +35,27 @@ def whichnumber(x, y):
         if y > 233 and y < 300:
             print 7
             number = 7
+        if y > 300 and y < 366:
+            print 0
+            number = 0
         else:
             number = "none"
+    elif x > 86 and x < 152:
+        if y > 100 and y < 166:
+            print 2
+            number = 2
+        if y > 166 and y < 233:
+            print 5
+            number = 5
+        if y > 233 and y < 300:
+            print 8
+            number = 8
+        if y > 300 and y < 366:
+            print 0
+            number = 0
+        else:
+            number = "none"
+        
     else:
         number =  "none"
 
