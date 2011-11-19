@@ -10,8 +10,11 @@ background = pygame.image.load(bg).convert()
 pygame.display.set_caption("Calculator")
 panel = pygame.image.load("panel.jpg").convert()
 numpad = pygame.image.load("numpad.jpg").convert()
-
-
+function = pygame.image.load("functions.jpg").convert()
+forn = "num"
+def funcornum(x,y):
+    if x > 20 and x < 220 and y > 100 and y < 300:
+        print "number"
 
 #Game loop
 while 1:
@@ -21,11 +24,13 @@ while 1:
             sys.exit()
         if event.type == MOUSEBUTTONDOWN:
             x , y = pygame.mouse.get_pos()
+            funcornum(x , y)
 
 
     
     screen.blit(background, (0,0))
     background.blit(panel, (10,10))
     background.blit(numpad, (20,100))
+    background.blit(function, (300,100))
     pygame.display.update()
     
