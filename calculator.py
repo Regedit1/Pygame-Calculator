@@ -12,8 +12,13 @@ panel = pygame.image.load("panel.jpg").convert()
 numpad = pygame.image.load("numpad.jpg").convert()
 function = pygame.image.load("functions.jpg").convert()
 equals = pygame.image.load("equals.jpg").convert()
+clearbutton = pygame.image.load("clearbutton.jpg").convert()
 forn = "num"
-def funcornum(x,y):
+func = " "
+inputnum = 1  #checks to see if a funtion has been called
+firstin = []
+secondin = []
+def funcornum(x,y): #tests to see if user input is a number or a function
     if x > 20 and x < 220 and y > 100 and y < 366:
         print "number"
         forn = "number"
@@ -29,44 +34,44 @@ def whichnumber(x, y):
     if x > 20 and x < 86:
         if y > 100 and y < 166:
             print 1
-            number = 1
-        if y > 166 and y < 233:
+            number = "1"
+        elif y > 166 and y < 233:
             print 4
-            number = 4
-        if y > 233 and y < 300:
+            number = "4"
+        elif y > 233 and y < 300:
             print 7
-            number = 7
-        if y > 300 and y < 366:
+            number = "7"
+        elif y > 300 and y < 366:
             print 0
-            number = 0
+            number = "0"
         else:
             number = "none"
     elif x > 86 and x < 152:
         if y > 100 and y < 166:
             print 2
-            number = 2
-        if y > 166 and y < 233:
+            number = "2"
+        elif y > 166 and y < 233:
             print 5
-            number = 5
-        if y > 233 and y < 300:
+            number = "5"
+        elif y > 233 and y < 300:
             print 8
-            number = 8
-        if y > 300 and y < 366:
+            number = "8"
+        elif y > 300 and y < 366:
             print 0
-            number = 0
+            number = "0"
         else:
             number = "none"
     elif x > 152 and x < 220:
         if y > 100 and y < 166:
             print 3
-            number = 3
-        if y > 166 and y < 233:
+            number = "3"
+        elif y > 166 and y < 233:
             print 6
-            number = 6
-        if y > 233 and y < 300:
+            number = "6"
+        elif y > 233 and y < 300:
             print 9
-            number = 9
-        if y > 300 and y < 366:
+            number = "9"
+        elif y > 300 and y < 366:
             print "."
             number = "."
         else:
@@ -78,6 +83,18 @@ def whichnumber(x, y):
 
     return number
 
+def whichfunction(y):
+    if y < 300:
+        func = "+"
+    elif y < 250:
+        func = "*"
+    elif y < 200:
+        func = "-"
+    elif y < 150:
+        func = "/"
+    return func
+        
+    
 
 #Game loop
 while 1:
@@ -89,7 +106,16 @@ while 1:
             x , y = pygame.mouse.get_pos()
             forn = funcornum(x , y)
             if forn == "number":
-                whichnumber(x, y)
+                number = whichnumber(x, y)
+                if inputnum == 1:
+                    firstin.append(number)
+                    firstin = " ".join(firstin)
+                    print firstin.replace(" ","")
+                    
+            if forn == "function":
+                print "its a function"
+                func = whichfunction(y)
+                print func
         
 
 
@@ -99,5 +125,6 @@ while 1:
     background.blit(numpad, (20,100))
     background.blit(function, (300,100))
     background.blit(equals, (280,320))
+    background.blit(clearbutton, (320,10))
     pygame.display.update()
     
