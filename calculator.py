@@ -109,8 +109,8 @@ while 1:
                 number = whichnumber(x, y)
                 if inputnum == 1:
                     firstin.append(number)
-                    firstin = " ".join(firstin)
-                    print firstin.replace(" ","")
+                    toprint = " ".join(firstin)
+                    print toprint.replace(" ","")
                     
             if forn == "function":
                 print "its a function"
