@@ -84,14 +84,14 @@ def whichnumber(x, y):
     return number
 
 def whichfunction(y):
-    if y < 300:
-        func = "+"
-    elif y < 250:
-        func = "*"
-    elif y < 200:
-        func = "-"
-    elif y < 150:
+    if y > 250:
         func = "/"
+    elif y > 200:
+        func = "-"
+    elif y > 150:
+        func = "*"
+    elif y > 100:
+        func = "+"
     return func
         
     
