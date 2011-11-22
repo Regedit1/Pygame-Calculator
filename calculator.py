@@ -25,6 +25,12 @@ def funcornum(x,y): #tests to see if user input is a number or a function
     elif x > 300 and x < 350 and y > 100 and y < 300:
         print "function"
         forn = "function"
+    elif y > 10 and y < 50 and x > 320 and x < 370:#tests for clear button
+        print "function"
+        forn = "function"
+    elif y > 320 and y < 386 and x > 280 and x < 346:#tests for equal button
+        print "function"
+        forn = "function"
     else:
         forn = "neither"
     return forn
@@ -83,15 +89,19 @@ def whichnumber(x, y):
 
     return number
 
-def whichfunction(y):
-    if y > 250:
-        func = "/"
-    elif y > 200:
-        func = "-"
-    elif y > 150:
-        func = "*"
-    elif y > 100:
-        func = "+"
+def whichfunction(y, x):
+    if y > 250 and y < 300:
+        func = " / "
+    elif y > 200 and y < 250:
+        func = " - "
+    elif y > 150 and y < 200:
+        func = " * "
+    elif y > 100 and y < 150:
+        func = " + "
+    elif y > 10 and y < 50 and x > 320 and x < 370:
+        func = "Clear"
+    elif y > 320 and y < 386 and x > 280 and x < 346:
+        func = "Calc"
     return func
         
     
@@ -114,8 +124,10 @@ while 1:
                     
             if forn == "function":
                 print "its a function"
-                func = whichfunction(y)
+                func = whichfunction(y, x)
                 print func
+                if func == "Clear":
+                    firstin, secondin = [],[]
         
 
 
