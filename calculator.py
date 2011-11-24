@@ -18,6 +18,8 @@ func = " "
 inputnum = 1  #checks to see if a funtion has been called
 firstin = []
 secondin = []
+spare = []
+answer = 0
 def funcornum(x,y): #tests to see if user input is a number or a function
     if x > 20 and x < 220 and y > 100 and y < 366:
         print "number"
@@ -104,6 +106,12 @@ def whichfunction(y, x):
         func = "Calc"
     return func
         
+def calc(firstin,secondin,func):
+    spare = firstin.append(func)
+    spare = spare.append(spare)
+    answer = eval("".join(spare))
+    firstin = "".split(answer)
+    return firstin, answer
     
 
 #Game loop
@@ -121,13 +129,26 @@ while 1:
                     firstin.append(number)
                     toprint = " ".join(firstin)
                     print toprint.replace(" ","")
+                if inputnum == 2:
+                    secondin.append(number)
+                    toprint = " ".join(firstin)
+                    print toprint.replace(" ","")
                     
             if forn == "function":
                 print "its a function"
                 func = whichfunction(y, x)
                 print func
+                if func != "Clear" and func !="Calc":
+                    if inputnum == 1:
+                        inputnum = 2
+                    if inputnum == 2:
+                        calc(firstin, secondin, func)
                 if func == "Clear":
                     firstin, secondin = [],[]
+                    inputnum = 1
+                if func == "Calc":
+                    firstin, answer = calc(firstin, secondin, func)
+                    print answer
         
 
 
