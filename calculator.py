@@ -14,12 +14,12 @@ function = pygame.image.load("functions.jpg").convert()
 equals = pygame.image.load("equals.jpg").convert()
 clearbutton = pygame.image.load("clearbutton.jpg").convert()
 forn = "num"
-func = " "
+func = []
 inputnum = 1  #checks to see if a funtion has been called
 firstin = []
 secondin = []
-spare = []
 answer = 0
+tocalc = ["no"]
 def funcornum(x,y): #tests to see if user input is a number or a function
     if x > 20 and x < 220 and y > 100 and y < 366:
         print "number"
@@ -30,9 +30,7 @@ def funcornum(x,y): #tests to see if user input is a number or a function
     elif y > 10 and y < 50 and x > 320 and x < 370:#tests for clear button
         print "function"
         forn = "function"
-    elif y > 320 and y < 386 and x > 280 and x < 346:#tests for equal button
-        print "function"
-        forn = "function"
+    
     else:
         forn = "neither"
     return forn
@@ -93,25 +91,26 @@ def whichnumber(x, y):
 
 def whichfunction(y, x):
     if y > 250 and y < 300:
-        func = " / "
+        func = [" / "]
     elif y > 200 and y < 250:
-        func = " - "
+        func = [" - "]
     elif y > 150 and y < 200:
-        func = " * "
+        func = [" * "]
     elif y > 100 and y < 150:
-        func = " + "
+        func = [" + "]
     elif y > 10 and y < 50 and x > 320 and x < 370:
-        func = "Clear"
-    elif y > 320 and y < 386 and x > 280 and x < 346:
-        func = "Calc"
-    return func
+        func = ["Clear"]
+    return func, 
+def timetocal():
+    if y > 320 and y < 386 and x > 280 and x < 346:
+        tocalc = ["Calc"]
+        return tocalc[0]
         
 def calc(firstin,secondin,func):
-    spare = firstin.append(func)
-    spare = spare.append(spare)
+    spare = firstin + secondin + func
     answer = eval("".join(spare))
-    firstin = "".split(answer)
-    return firstin, answer
+    firstin = "".split(str(answer))
+    return firstin
     
 
 #Game loop
@@ -131,24 +130,25 @@ while 1:
                     print toprint.replace(" ","")
                 if inputnum == 2:
                     secondin.append(number)
-                    toprint = " ".join(firstin)
+                    toprint = " ".join(secondin)
                     print toprint.replace(" ","")
                     
             if forn == "function":
                 print "its a function"
                 func = whichfunction(y, x)
-                print func
-                if func != "Clear" and func !="Calc":
+                print func[0]
+                if func[0] != "Clear" and tocalc[0] !="Calc":
                     if inputnum == 1:
                         inputnum = 2
-                    if inputnum == 2:
-                        calc(firstin, secondin, func)
-                if func == "Clear":
+                    
+                elif func[0] == "Clear":
                     firstin, secondin = [],[]
                     inputnum = 1
-                if func == "Calc":
-                    firstin, answer = calc(firstin, secondin, func)
-                    print answer
+
+            if timetocal() == "Calc":
+                firstin = calc(firstin, secondin, func)
+                print firstin
+                tocalc = ["no"]
         
 
 
