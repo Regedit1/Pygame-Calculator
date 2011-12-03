@@ -126,12 +126,16 @@ while 1:
                 number = whichnumber(x, y)
                 if inputnum == 1:
                     firstin.append(number)
+                    
                     toprint = " ".join(firstin)
-                    print toprint.replace(" ","")
+                    toprint.replace(" ","")
+                    print toprint
                 if inputnum == 2:
                     secondin.append(number)
+                    
                     toprint = " ".join(secondin)
-                    print toprint.replace(" ","")
+                    toprint.replace(" ","")
+                    print toprint
                     
             if forn == "function":
                 print "its a function"
@@ -145,7 +149,7 @@ while 1:
                     firstin, secondin = [],[]
                     inputnum = 1
 
-            if timetocal() == "Calc":
+            if timetocal() != "Calc":
                 firstin = calc(firstin, secondin, func)
                 print firstin
                 tocalc = ["no"]
